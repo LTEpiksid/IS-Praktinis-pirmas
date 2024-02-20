@@ -15,13 +15,9 @@ public class DecryptionMethodForm {
         JButton btnArrayMethod = new JButton("Use Array Method");
         JButton btnASCIIMethod = new JButton("Use ASCII Method");
 
-        btnArrayMethod.addActionListener(e -> {
-            new EncryptionDecryptionForm("array");
-        });
+        btnArrayMethod.addActionListener(e -> new EncryptionDecryptionForm("array"));
 
-        btnASCIIMethod.addActionListener(e -> {
-            new EncryptionDecryptionForm("ASCII");
-        });
+        btnASCIIMethod.addActionListener(e -> new EncryptionDecryptionForm("ASCII"));
 
         panel.add(imageLabel);
         panel.add(btnArrayMethod);
