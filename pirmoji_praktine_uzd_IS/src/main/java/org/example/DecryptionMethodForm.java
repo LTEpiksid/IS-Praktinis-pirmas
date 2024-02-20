@@ -1,15 +1,16 @@
 package org.example;
 
 import javax.swing.*;
+import java.awt.*;
+import java.util.Objects;
 
 public class DecryptionMethodForm {
 
     public DecryptionMethodForm() {
         JFrame frame = new JFrame("Choose Decryption Method");
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(new BorderLayout());
 
-        ImageIcon imageIcon = new ImageIcon("Logo.png");
-
+        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/Logo.png")));
         JLabel imageLabel = new JLabel(imageIcon);
 
         JButton btnArrayMethod = new JButton("Use Array Method");
@@ -19,17 +20,20 @@ public class DecryptionMethodForm {
 
         btnASCIIMethod.addActionListener(e -> new EncryptionDecryptionForm("ASCII"));
 
-        panel.add(imageLabel);
-        panel.add(btnArrayMethod);
-        panel.add(btnASCIIMethod);
+        imageLabel.setPreferredSize(new Dimension(200, 200));
+
+        panel.add(imageLabel, BorderLayout.NORTH);
+        panel.add(btnArrayMethod, BorderLayout.CENTER);
+        panel.add(btnASCIIMethod, BorderLayout.SOUTH);
+
         frame.add(panel);
-        frame.setSize(300, 310);
+        frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 
     public static void main(String[] args) {
-        new DecryptionMethodForm();
+        SwingUtilities.invokeLater(DecryptionMethodForm::new);
     }
 }
